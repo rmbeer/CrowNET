@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Donación Monero</title>
+</head>
+
+<body style="font-family:Arial;text-align:center;margin-top:50px;">
+<h1>CrowNET</h1>
+<table width="80%" style="margin:auto;">
+<tr>
+
+<td>
+<h2>Donación Monero (XMR)</h2>
+
+<p>Envia cualquier monto que quieras.</p>
+
+<p><b>Direccion:</b></p>
+<p id="addr">89ysiK5U2FV1bxDAZAaq4dhDSPARc2zkE2yYQpPiqQFKbkrrUmYQzMtG4oYwz37agZUdBxevMec1r86E4F7fDWpM9B5zBnD</p>
+
+<button onclick="copyAddress()">Copiar Direccion</button>
+
+<br><br>
+
+<p>Ingresar cantidad de donacion (XMR):</p>
+
+<input type="number" id="amount" step="0.01" min="0.01" placeholder="0.1">
+
+<br><br>
+
+<button onclick="pay()">Abrir Wallet</button>
+
+<script>
+
+function copyAddress() {
+    var addr = document.getElementById("addr").innerText;
+    navigator.clipboard.writeText(addr);
+    alert("Address copied");
+}
+
+function pay() {
+
+    var addr = document.getElementById("addr").innerText;
+    var amount = document.getElementById("amount").value;
+
+    var url = "monero:" + addr;
+
+    if(amount)
+        url += "?tx_amount=" + amount + "&tx_description=Donation";
+
+    window.location.href = url;
+}
+
+</script>
+
+</td><td>
+
+<h2>QR donacion:</h2>
+
+<img src="qrmonero.png" width="200">
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
